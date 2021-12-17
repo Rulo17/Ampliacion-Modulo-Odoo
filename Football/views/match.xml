@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- model.name tree view -->
+    <record id="match_tree" model="ir.ui.view">
+        <field name="name">football.match.tree</field>
+        <field name="model">football.match</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="team_ids"/>
+                <field name="startTime"/>
+                <field name="endTime"/>
+                <field name="duration"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- model.name form view -->
+    <record id="match_form" model="ir.ui.view">
+        <field name="name">football.match.form</field>
+        <field name="model">football.match</field>
+        <field name="arch" type="xml">
+            <form string="Matches form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="startTime"/>
+                            <field name="endTime"/>
+                            <field name="duration"/>
+                        </group>
+                        <group>
+                            <field name="team_ids"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- model.name action window -->
+    <record id="match_action" model="ir.actions.act_window">
+        <field name="name">Matches</field>
+        <field name="res_model">football.match</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+    <menuitem id="football_root" name="La Liga"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="football_match_root" name="Matches" parent="football_root"/>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="football_match" name="Match List" parent="football_match_root" action="match_action"/>
+    
+</odoo>

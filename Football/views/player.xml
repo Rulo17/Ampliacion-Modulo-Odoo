@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- model.name tree view -->
+    <record id="player_tree" model="ir.ui.view">
+        <field name="name">football.player.tree</field>
+        <field name="model">football.player</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="lastname"/>
+                <field name="team_id"/>
+                <field name="country"/>
+                <field name="age"/>
+                <field name="pace"/>
+                <field name="strength"/>
+                <field name="shot"/>
+                <field name="defense"/>
+                <field name="rating"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- model.name form view -->
+    <record id="player_form" model="ir.ui.view">
+        <field name="name">football.player.form</field>
+        <field name="model">football.player</field>
+        <field name="arch" type="xml">
+            <form string="Players form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="lastname"/>
+                            <field name="team_id"/>
+                            <field name="country"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="pace"/>
+                            <field name="strength"/>
+                            <field name="shot"/>
+                            <field name="defense"/>
+                            <field name="rating"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- model.name action window -->
+    <record id="player_action" model="ir.actions.act_window">
+        <field name="name">Players</field>
+        <field name="res_model">football.player</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+    <menuitem id="football_root" name="La Liga"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="football_player_root" name="Players" parent="football_root"/>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="football_player" name="Player List" parent="football_player_root" action="player_action"/>
+
+</odoo>
